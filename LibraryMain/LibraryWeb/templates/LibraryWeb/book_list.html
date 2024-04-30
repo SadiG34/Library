@@ -1,0 +1,22 @@
+{% extends "LibraryWeb/base.html" %}
+
+{% block content %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+<h1>Books</h1>
+<ol>
+<a href="?sort=title" class="btn btn-outline-info ml-3">Сортировать по названию</a>
+<a href="?sort=author" class="btn btn-outline-info ml-3">Сортировать по автору</a>
+<a href="?sort=copies" class="btn btn-outline-info ml-3">Сортировать по количеству экземпляров</a> <br><br>
+{% for book in object_list %}
+
+    <li>{{ book.publication_year }} - {{ book.title }} - {{ book.author }} <a href="{% url 'update_book' book.id %}" class="btn btn-outline-info ml-3">Edit</a>
+        <a href="{% url 'delete_book' book.id %}" class="btn btn-outline-info ml-3">Delete</a>
+
+{% empty %}
+    <li>No books yet.</li>
+{% endfor %}
+    <br><a href="{% url 'add_book' %}" class="btn btn-outline-info ml-3">Add a book</a>
+
+</ol>
+{% endblock content %}

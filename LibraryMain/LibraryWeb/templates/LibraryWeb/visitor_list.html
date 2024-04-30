@@ -1,0 +1,14 @@
+{% extends "LibraryWeb/base.html" %}
+
+{% block content %}
+<h1>Visitors</h1>
+<ol>
+  {% for visitor in object_list %}
+      <li>{{ visitor.full_name }} - {{ visitor.phone }}
+          <a href="{% url 'add_visitor' %}" class="btn btn-outline-info ml-3">Add</a>
+          <a href="{% url 'update_visitor' visitor.id %}" class="btn btn-outline-info ml-3">Edit</a>
+  {% empty %}
+      <li>No visitors yet.</li>
+  {% endfor %}
+</ol>
+{% endblock content %}

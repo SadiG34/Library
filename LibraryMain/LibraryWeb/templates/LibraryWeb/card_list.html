@@ -1,0 +1,13 @@
+
+{% extends "LibraryWeb/base.html" %}
+
+{% block content %}
+
+<h3>Открытые карточки:</h3>
+    <ul>
+        {% for card in open_cards %}
+            <li>{{ card.visitor }}, {{ card.book }} <br> дата выдачи: {{ card.borrowed_date }} <a href="{% url 'return_book' card.id %}" class="btn btn-outline-info ml-3">Закрыть карточку</a><br>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}

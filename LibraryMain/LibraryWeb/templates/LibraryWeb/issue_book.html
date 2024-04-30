@@ -1,0 +1,10 @@
+{% extends 'LibraryWeb/base.html' %}
+
+{% block content %}
+  <h2>Issue a Book</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-outline-info ml-3">Submit</button>
+  </form>
+{% endblock %}
